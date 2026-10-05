@@ -1,7 +1,7 @@
 # practice-extension
+**Repo created**: 05-10-2026
 
 # SVG Picker
-
 Browser extension: click the toolbar icon, hover an inline SVG on any page,
 click it, and open it in a viewer tab (light/dark/checker background,
 download, copy markup).
