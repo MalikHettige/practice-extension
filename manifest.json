@@ -1,9 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Practice Extension",
+  "name": "SVG Picker",
   "version": "0.1.0",
-  "description": "Learning project.",
+  "description": "Click any inline SVG on a page to open it in a viewer tab. Preview on light or dark backgrounds, then download or copy it.",
   "permissions": ["activeTab", "scripting"],
   "background": { "service_worker": "background.js" },
-  "action": { "default_title": "Pick an SVG" }
+  "action": {
+    "default_title": "Pick an SVG",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }
