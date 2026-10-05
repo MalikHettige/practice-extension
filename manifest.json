@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Practice Extension",
+  "version": "0.1.0",
+  "description": "Learning project.",
+  "content_scripts": [
+    {
+      "matches": ["https://example.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
