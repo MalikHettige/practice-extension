@@ -42,6 +42,26 @@
     window.__svgPickerActive = false;
   };
 
+const STYLE_PROPS = [
+  "fill", "fill-opacity", "fill-rule",
+  "stroke", "stroke-width", "stroke-opacity",
+  "stroke-linecap", "stroke-linejoin", "stroke-dasharray",
+  "stop-color", "stop-opacity",
+  "opacity", "color", "display", "visibility",
+];
+
+// Copy the effective styles from the live SVG onto the clone, element by element
+const inlineStyles = (orig, clone) => {
+  const o = [orig, ...orig.querySelectorAll("*")];
+  const c = [clone, ...clone.querySelectorAll("*")];
+  o.forEach((el, i) => {
+    const cs = getComputedStyle(el);
+    STYLE_PROPS.forEach((p) => {
+      c[i].style.setProperty(p, cs.getPropertyValue(p));
+    });
+  });
+};
+
   const onClick = (e) => {
     const svg = findSvg(e.target);
     if (!svg) return; // clicks outside an SVG behave normally
@@ -50,6 +70,7 @@
     stop(); // removes our outline before we copy the SVG
 
     const clone = svg.cloneNode(true);
+      inlineStyles(svg, clone); // <-- the new line
     if (!clone.getAttribute("viewBox")) {
       const w = parseFloat(clone.getAttribute("width"));
       const h = parseFloat(clone.getAttribute("height"));
