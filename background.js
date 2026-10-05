@@ -8,7 +8,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 chrome.runtime.onMessage.addListener((msg) => {
   if (msg.type === "OPEN_SVG") {
     const url =
-      "data:image/svg+xml;charset=utf-8," + encodeURIComponent(msg.svg);
+      chrome.runtime.getURL("viewer.html") + "#" + encodeURIComponent(msg.svg);
     chrome.tabs.create({ url });
   }
 });
