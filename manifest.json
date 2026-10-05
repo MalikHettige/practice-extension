@@ -3,10 +3,7 @@
   "name": "Practice Extension",
   "version": "0.1.0",
   "description": "Learning project.",
-  "content_scripts": [
-    {
-      "matches": ["https://example.com/*"],
-      "js": ["content.js"]
-    }
-  ]
+  "permissions": ["activeTab", "scripting"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Pick an SVG" }
 }
